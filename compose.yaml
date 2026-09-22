@@ -1,0 +1,22 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: amediaz-group-dev
+    ports:
+      - "${PORT:-3100}:3000"
+    # Synchronise les fichiers modifiés dans le conteneur (hot reload)
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - node_modules/
+            - .next/
+            - .git/
+        - action: rebuild
+          path: package.json
+        - action: rebuild
+          path: package-lock.json
