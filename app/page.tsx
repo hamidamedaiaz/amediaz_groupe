@@ -1,19 +1,33 @@
-import { Container } from "@/components/ui/Container";
-import { site } from "@/lib/site";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { About } from "@/components/sections/About";
+import { BIMDigital } from "@/components/sections/BIMDigital";
+import { Contact } from "@/components/sections/Contact";
+import { Expertises } from "@/components/sections/Expertises";
+import { Founder } from "@/components/sections/Founder";
+import { Hero } from "@/components/sections/Hero";
+import { ProjectLifecycle } from "@/components/sections/ProjectLifecycle";
+import { References } from "@/components/sections/References";
+import { Sectors } from "@/components/sections/Sectors";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export default function Home() {
   return (
-    <main>
-      <section id="hero" className="section-navy flex min-h-svh items-center">
-        <Container>
-          <p className="eyebrow">{site.location}</p>
-          <h1 className="h-display mt-6">{site.name}</h1>
-          <p className="mt-6 text-lg text-white/70 md:text-xl">{site.tagline}</p>
-          <p className="mt-16 border-t border-white/15 pt-6 font-mono text-xs uppercase tracking-[0.2em] text-white/50">
-            Site en construction
-          </p>
-        </Container>
-      </section>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <About />
+        <Expertises />
+        <ProjectLifecycle />
+        <Sectors />
+        <References />
+        <BIMDigital />
+        <Founder />
+        <Contact />
+      </main>
+      <Footer />
+      <ScrollReveal />
+    </>
   );
 }

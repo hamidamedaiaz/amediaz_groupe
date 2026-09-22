@@ -27,7 +27,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="fr"
       data-scroll-behavior="smooth"
       className={`${manrope.variable} ${plexMono.variable} antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        {/* Active les animations au scroll uniquement si JS est disponible */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body>{children}</body>
     </html>
   );
