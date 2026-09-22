@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens ---------- */
+@theme {
+  --color-navy: #0b1d2d;
+  --color-teal: #0f9d9a;
+  --color-gold: #c7a15a;
+  --color-paper: #f6f4ef;
+  --color-ink: #15222d;
+  --color-muted: #6b747c;
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --container-site: 84rem; /* 1344px */
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compense le futur header fixe lors des sauts d'ancre */
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  ::selection {
+    background-color: var(--color-teal);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
+  }
+}
+
+/* ---------- Layout ---------- */
+@utility container-site {
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 3rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 4rem;
+  }
+}
+
+/* Sections : espace vertical généreux + alternance navy / blanc cassé */
+@utility section {
+  padding-block: 6rem;
+
+  @media (width >= 48rem) {
+    padding-block: 8rem;
+  }
+  @media (width >= 80rem) {
+    padding-block: 10rem;
+  }
+}
+
+@utility section-navy {
+  background-color: var(--color-navy);
+  color: var(--color-paper);
+}
+
+@utility section-paper {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* ---------- Typographie ---------- */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+@utility h-display {
+  font-size: clamp(2.75rem, 7vw, 6rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+@utility h-section {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+@utility h-sub {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+@utility lead {
+  font-size: clamp(1.125rem, 1.6vw, 1.3125rem);
+  line-height: 1.6;
+  max-width: 42rem;
+}
+
+@utility link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+
+  &:hover {
+    color: var(--color-teal);
+    text-decoration-color: currentColor;
+  }
+}
+
+/* ---------- Boutons (angles droits, pas d'ombre) ---------- */
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.5rem;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+@utility btn-primary {
+  background-color: var(--color-teal);
+  color: #fff;
+
+  &:hover {
+    background-color: var(--color-navy);
+  }
+}
+
+@utility btn-outline {
+  border-color: currentColor;
+
+  &:hover {
+    background-color: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-navy);
+  }
+}
