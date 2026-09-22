@@ -4,6 +4,13 @@ export const hero = {
   title: ["La précision au service", "de vos projets."],
   intro:
     "Topographie, foncier, BIM et solutions digitales au service des projets de construction au Maroc.",
+  // Images d'arrière-plan qui défilent (dossier public/imageTOPO)
+  images: [
+    { src: "/imageTOPO/fiche-metier-geometre.jpg", alt: "Géomètre topographe utilisant une station totale", position: "center" },
+    { src: "/imageTOPO/AdobeStock_392465470.jpeg", alt: "Ingénieur sur chantier utilisant des outils BIM", position: "center" },
+    { src: "/imageTOPO/Blog-BIM-Software-2.png.webp", alt: "Maquette BIM consultée sur tablette sur chantier", position: "center" },
+    { src: "/imageTOPO/ingenieur-topographe-scaled.jpg", alt: "Ingénieure étudiant un plan", position: "center 30%" },
+  ],
 };
 
 export const about = {

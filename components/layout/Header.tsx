@@ -25,7 +25,7 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 text-paper transition-colors duration-300 ${
-        solid ? "border-b border-white/10 bg-navy/95 backdrop-blur" : "border-b border-transparent"
+        solid ? "bg-navy/85 shadow-[0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md" : ""
       }`}
     >
       <div className="container-site flex h-20 items-center justify-between gap-8">
@@ -38,11 +38,11 @@ export function Header() {
             className="h-9 w-auto"
             preload
           />
-          <span className="text-sm font-semibold tracking-[0.14em]">{site.name}</span>
+          <span className="font-display text-[0.9375rem] font-semibold tracking-[0.08em]">{site.name}</span>
         </a>
 
         <nav aria-label="Navigation principale" className="hidden items-center gap-10 lg:flex">
-          <ul className="flex items-center gap-8 text-sm text-paper/70">
+          <ul className="flex items-center gap-8 text-[0.9375rem] text-muted">
             {navigation.map((item) => (
               <li key={item.id}>
                 <a href={`#${item.id}`} className="hover:text-paper">
@@ -51,7 +51,7 @@ export function Header() {
               </li>
             ))}
           </ul>
-          <a href="#contact" className="btn btn-primary py-3! hover:bg-paper! hover:text-navy!">
+          <a href="#contact" className="btn btn-primary min-h-11! px-5! py-2.5!">
             Parler de votre projet
           </a>
         </nav>
@@ -74,13 +74,13 @@ export function Header() {
       </div>
 
       {open && (
-        <nav id="menu-mobile" aria-label="Navigation mobile" className="border-t border-white/10 lg:hidden">
+        <nav id="menu-mobile" aria-label="Navigation mobile" className="lg:hidden">
           <ul className="container-site flex flex-col py-6">
             {navigation.map((item) => (
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  className="block border-b border-white/10 py-4 text-2xl font-semibold"
+                  className="font-display block py-3 text-2xl font-semibold"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}

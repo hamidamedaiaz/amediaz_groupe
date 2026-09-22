@@ -9,9 +9,6 @@ const fields = [
   { name: "email", label: "Email", type: "email", autoComplete: "email", required: true },
 ] as const;
 
-const inputClass =
-  "mt-2 w-full border-b border-white/20 bg-transparent py-3 text-lg text-paper outline-none transition-colors placeholder:text-paper/30 focus:border-teal";
-
 // V1 sans backend : ouvre le client mail avec la demande pré-remplie.
 export function ContactForm() {
   const [status, setStatus] = useState<string | null>(null);
@@ -36,33 +33,28 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form onSubmit={handleSubmit} className="grid gap-6 sm:grid-cols-2">
       {fields.map((f) => (
-        <label key={f.name} className="block">
-          <span className="font-mono text-xs uppercase tracking-[0.16em] text-paper/50">
+        <label key={f.name} className={`block ${f.name === "email" ? "sm:col-span-2" : ""}`}>
+          <span className="text-sm font-medium">
             {f.label}
-            {f.required && " *"}
+            {f.required && <span className="text-teal"> *</span>}
           </span>
-          <input
-            name={f.name}
-            type={f.type}
-            autoComplete={f.autoComplete}
-            required={f.required}
-            className={inputClass}
-          />
+          <input name={f.name} type={f.type} autoComplete={f.autoComplete} required={f.required} className="field" />
         </label>
       ))}
-      <label className="block">
-        <span className="font-mono text-xs uppercase tracking-[0.16em] text-paper/50">Message *</span>
-        <textarea name="message" rows={4} required className={`${inputClass} resize-none`} />
+      <label className="block sm:col-span-2">
+        <span className="text-sm font-medium">
+          Message<span className="text-teal"> *</span>
+        </span>
+        <textarea name="message" rows={5} required className="field resize-y" />
       </label>
 
-      <div className="flex flex-wrap items-center gap-6 pt-4">
-        <button type="submit" className="btn btn-primary hover:bg-paper! hover:text-navy!">
+      <div className="flex flex-wrap items-center gap-6 sm:col-span-2">
+        <button type="submit" className="btn btn-primary">
           Envoyer votre demande
-          <span aria-hidden>→</span>
         </button>
-        <p aria-live="polite" className="text-sm text-paper/60">
+        <p aria-live="polite" className="text-sm text-muted">
           {status}
         </p>
       </div>

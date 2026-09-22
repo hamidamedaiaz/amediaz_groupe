@@ -4,7 +4,7 @@ import { navigation, site } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="section-navy border-t border-white/10">
+    <footer className="bg-surface">
       <Container className="py-16">
         <div className="flex flex-col justify-between gap-12 md:flex-row">
           <div className="flex items-start gap-5">
@@ -13,17 +13,17 @@ export function Footer() {
               alt=""
               width={488}
               height={474}
-              className="h-12 w-auto opacity-70"
+              className="h-11 w-auto"
             />
             <div>
-              <p className="font-semibold tracking-[0.14em]">{site.name}</p>
-              <p className="mt-2 text-sm text-paper/60">{site.tagline}</p>
-              <p className="mt-6 text-sm text-paper/60">{site.slogan}</p>
+              <p className="font-display font-semibold tracking-[0.08em]">{site.name}</p>
+              <p className="mt-1 text-sm text-muted">{site.tagline}</p>
+              <p className="mt-6 text-sm text-muted italic">{site.slogan}</p>
             </div>
           </div>
 
           <nav aria-label="Navigation du pied de page">
-            <ul className="grid grid-cols-2 gap-x-12 gap-y-3 text-sm text-paper/60">
+            <ul className="grid grid-cols-2 gap-x-12 gap-y-3 text-sm text-muted">
               {navigation.map((item) => (
                 <li key={item.id}>
                   <a href={`#${item.id}`} className="hover:text-paper">
@@ -35,7 +35,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-16 flex flex-col gap-3 border-t border-white/10 pt-6 font-mono text-xs uppercase tracking-[0.14em] text-paper/40 md:flex-row md:justify-between">
+        <div className="mt-14 flex flex-col gap-2 text-sm text-muted md:flex-row md:justify-between">
           <p>Témara · Maroc</p>
           <p>ICE {site.ice ?? "À renseigner"}</p>
           <p>© {new Date().getFullYear()} {site.name}</p>
