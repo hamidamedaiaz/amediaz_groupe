@@ -52,7 +52,7 @@ export function Header() {
             ))}
           </ul>
           <a href="#contact" className="btn btn-primary min-h-11! px-5! py-2.5!">
-            Parler de votre projet
+            Demande de devis
           </a>
         </nav>
 
@@ -89,7 +89,7 @@ export function Header() {
             ))}
             <li className="pt-8">
               <a href="#contact" className="btn btn-primary" onClick={() => setOpen(false)}>
-                Parler de votre projet
+                Demande de devis
               </a>
             </li>
           </ul>

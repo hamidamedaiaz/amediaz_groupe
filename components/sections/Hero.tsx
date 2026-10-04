@@ -38,7 +38,7 @@ export function Hero() {
             Découvrir nos expertises
           </a>
           <a href="#contact" className="btn btn-outline backdrop-blur-sm">
-            Parler de votre projet
+            Demande de devis
           </a>
         </div>
 

@@ -1,7 +1,7 @@
 // Contenus de la page. Les textes marqués TODO sont provisoires et à valider.
 
 export const hero = {
-  title: ["La précision au service", "de vos projets."],
+  title: ["Demain se mesure", "aujourd’hui."],
   intro:
     "Topographie, foncier, BIM et solutions digitales au service des projets de construction au Maroc.",
   // Images d'arrière-plan qui défilent (dossier public/imageTOPO)
