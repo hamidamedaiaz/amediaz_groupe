@@ -393,7 +393,7 @@
 /* ---------- Chaîne de photos en mouvement continu (PhotoChain) ----------
    La piste contient deux copies de la liste : glisser de 0 à -50 % ramène
    exactement au départ, d'où une boucle sans coupure. Volontairement active
-   même avec « animations réduites » (demande du client) : un bouton pause est fourni. */
+   même avec « animations réduites » (demande du client) ; arrêtée quand la visionneuse est ouverte. */
 .chain-track {
   animation: chain-scroll var(--duration, 90s) linear infinite;
   will-change: transform;
@@ -406,4 +406,14 @@
   to {
     transform: translateX(-50%);
   }
+}
+
+/* ---------- Protection des photos (voir ImageProtection.tsx) ----------
+   Pas de sélection, pas de glisser, pas de menu d'appui long (iOS). */
+img,
+[data-protected] {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
 }

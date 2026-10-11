@@ -89,7 +89,8 @@ export function Footer() {
 
         <div className="mt-20 flex flex-col gap-3 border-t border-line pt-8 text-xs text-steel md:flex-row md:justify-between">
           <p>
-            © {new Date().getFullYear()} {site.legalName}. Tous droits réservés.
+            © {new Date().getFullYear()} {site.legalName}. Tous droits réservés. Photos protégées : toute
+            reproduction sans autorisation est interdite.
           </p>
           <p>ICE {site.ice}</p>
           <p>{site.city}</p>

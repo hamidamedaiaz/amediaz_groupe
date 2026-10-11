@@ -7,6 +7,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { ImageProtection } from "@/components/ui/ImageProtection";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { site } from "@/data/site";
 import "./globals.css";
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main id="contenu">{children}</main>
         <Footer />
         <ScrollReveal />
+        <ImageProtection />
       </body>
     </html>
   );
