@@ -162,52 +162,66 @@
   max-width: 40rem;
 }
 
-/* ---------- Boutons ---------- */
+/* ---------- Boutons ----------
+   Une seule famille pour tous les CTA (hero, header, formulaire) :
+   même hauteur, même typographie, mêmes angles ; seule la « présence » varie. */
 @utility btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
   min-height: 3.25rem;
-  padding: 0.875rem 1.625rem;
+  padding: 0.875rem 1.75rem;
   border: 1px solid transparent;
   border-radius: 2px;
   font-size: 0.9375rem;
   font-weight: 500;
+  letter-spacing: 0.01em;
   line-height: 1;
   white-space: nowrap;
   transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease;
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 
   & svg {
-    transition: transform 0.3s var(--ease-out-soft);
+    transition: transform 0.35s var(--ease-out-soft);
   }
   &:hover svg {
     transform: translateX(3px);
   }
 }
 
-/* Bouton principal : ivoire, passe à l'or au survol */
+/* Variante compacte (header) : même style, gabarit réduit */
+@utility btn-sm {
+  min-height: 2.75rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+}
+
+/* Bouton principal : plein ivoire, clair et premium ; s'éclaircit au survol */
 @utility btn-primary {
   background-color: var(--color-ivory);
+  border-color: var(--color-ivory);
   color: var(--color-navy);
 
+  & svg {
+    color: var(--color-gold);
+  }
   &:hover {
-    background-color: var(--color-gold);
-    color: var(--color-navy);
+    background-color: #fff;
+    border-color: #fff;
   }
 }
 
-/* Bouton secondaire : filet discret */
+/* Bouton secondaire : discret, filet fin ivoire qui se teinte d'or au survol */
 @utility btn-outline {
-  border-color: color-mix(in srgb, var(--color-ivory) 28%, transparent);
+  border-color: color-mix(in srgb, var(--color-ivory) 22%, transparent);
   color: var(--color-ivory);
 
   &:hover {
-    border-color: var(--color-gold);
-    color: var(--color-gold-light);
+    border-color: color-mix(in srgb, var(--color-gold) 70%, transparent);
+    background-color: color-mix(in srgb, var(--color-ivory) 4%, transparent);
   }
 }
 
@@ -300,6 +314,34 @@
   .hero-slide.is-active img {
     animation: hero-zoom 9s ease-out forwards;
   }
+}
+
+/* Étalonnage léger des photos du hero : ciel moins éclatant, matière plus dense */
+.hero-slide img {
+  filter: saturate(0.9) contrast(1.06) brightness(0.9);
+}
+
+/* Fondu photo → navy (desktop) : paliers progressifs pour une transition naturelle */
+.hero-veil-side {
+  background-image: linear-gradient(
+    to right,
+    var(--color-navy) 0%,
+    color-mix(in srgb, var(--color-navy) 82%, transparent) 14%,
+    color-mix(in srgb, var(--color-navy) 50%, transparent) 30%,
+    color-mix(in srgb, var(--color-navy) 20%, transparent) 46%,
+    transparent 64%
+  );
+}
+
+/* Voile mobile / tablette : plus dense en bas, où se trouve le texte */
+.hero-veil-mobile {
+  background-image: linear-gradient(
+    to top,
+    var(--color-navy) 0%,
+    color-mix(in srgb, var(--color-navy) 90%, transparent) 40%,
+    color-mix(in srgb, var(--color-navy) 62%, transparent) 70%,
+    color-mix(in srgb, var(--color-navy) 45%, transparent) 100%
+  );
 }
 
 @keyframes hero-zoom {

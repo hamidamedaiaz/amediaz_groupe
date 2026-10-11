@@ -133,7 +133,7 @@ export function Header() {
                 </li>
               ))}
             </ul>
-            <Link href={quoteCta.href} className="btn btn-primary min-h-11! px-5! py-2.5!" onMouseEnter={scheduleClose}>
+            <Link href={quoteCta.href} className="btn btn-sm btn-primary" onMouseEnter={scheduleClose}>
               {quoteCta.label}
             </Link>
           </nav>

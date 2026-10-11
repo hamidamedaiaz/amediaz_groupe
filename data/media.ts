@@ -23,7 +23,7 @@ export const media = {
     width: 966,
     height: 1288,
     alt: "Tour en construction : structure béton et grue à tour sur chantier",
-    position: "50% 35%",
+    position: "62% 22%",
   },
   tourChantierGrue: {
     src: "/images/terrain/tour-chantier-grue.jpg",

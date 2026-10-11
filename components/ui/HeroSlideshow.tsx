@@ -31,11 +31,13 @@ export function HeroSlideshow({ slides, className = "" }: { slides: MediaKey[]; 
         </div>
       ))}
 
-      {/* Voiles : lisibilité du texte (mobile) et fondu vers le navy à gauche (desktop) */}
-      <div className="absolute inset-0 bg-navy/70 lg:hidden" />
-      <div className="absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-navy to-transparent lg:block" />
-      <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-navy/90 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-navy/90 to-transparent" />
+      {/* Voiles (styles dans globals.css, .hero-veil-*) :
+          - mobile / tablette : dégradé vertical, la photo reste visible en haut ;
+          - desktop : fondu horizontal progressif vers le navy, sans voile laiteux. */}
+      <div aria-hidden className="hero-veil-mobile absolute inset-0 lg:hidden" />
+      <div aria-hidden className="hero-veil-side absolute inset-y-0 left-0 hidden w-[60%] lg:block" />
+      <div aria-hidden className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-navy/60 to-transparent" />
+      <div aria-hidden className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy/70 to-transparent" />
 
       {/* Indicateurs */}
       <div className="absolute bottom-8 right-6 z-10 hidden items-center gap-3 lg:flex lg:right-10">
