@@ -3,6 +3,9 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/data/site";
 
+// Requis par l'export statique (output: "export").
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const url = (path: string) => new URL(path, site.url).toString();
   const now = new Date();
