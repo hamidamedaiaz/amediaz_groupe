@@ -1,34 +1,39 @@
 import type { ReactNode } from "react";
 
 type SectionHeadingProps = {
+  /** Petit badge « pilule » au-dessus du titre. */
   eyebrow: string;
   title: ReactNode;
   intro?: ReactNode;
-  /** `split` : titre à gauche, intro à droite (grand écran). */
-  layout?: "stack" | "split";
+  /** `center` : titre et intro centrés ; `left` : alignés à gauche. */
+  align?: "center" | "left";
   as?: "h1" | "h2";
   className?: string;
 };
 
-/** En-tête de section : libellé, titre, introduction. */
-export function SectionHeading({ eyebrow, title, intro, layout = "split", as: Tag = "h2", className = "" }: SectionHeadingProps) {
+/** En-tête de section : badge, titre (H2), introduction courte. */
+export function SectionHeading({
+  eyebrow,
+  title,
+  intro,
+  align = "center",
+  as: Tag = "h2",
+  className = "",
+}: SectionHeadingProps) {
+  const centered = align === "center";
   return (
-    <div
-      className={`grid gap-6 ${layout === "split" ? "lg:grid-cols-12 lg:items-end lg:gap-16" : ""} ${className}`}
-    >
-      <div className={layout === "split" ? "lg:col-span-7" : ""}>
-        <p className="eyebrow" data-reveal>
-          {eyebrow}
-        </p>
-        <Tag className="h-section mt-6" data-reveal style={{ "--delay": "0.08s" } as React.CSSProperties}>
-          {title}
-        </Tag>
-      </div>
+    <div className={`${centered ? "mx-auto max-w-[44rem] text-center" : "max-w-[44rem]"} ${className}`}>
+      <p className="badge" data-reveal>
+        {eyebrow}
+      </p>
+      <Tag className="h-section mt-4" data-reveal style={{ "--delay": "0.06s" } as React.CSSProperties}>
+        {title}
+      </Tag>
       {intro && (
         <p
-          className={`lead ${layout === "split" ? "lg:col-span-5 lg:justify-self-end" : ""}`}
+          className={`lead mt-4 ${centered ? "mx-auto" : ""}`}
           data-reveal
-          style={{ "--delay": "0.16s" } as React.CSSProperties}
+          style={{ "--delay": "0.12s" } as React.CSSProperties}
         >
           {intro}
         </p>

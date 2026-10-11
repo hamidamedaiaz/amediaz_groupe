@@ -19,16 +19,16 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
 
   return (
     <nav aria-label="Fil d’Ariane">
-      <ol className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.8125rem] text-steel">
+      <ol className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.8125rem] text-muted">
         {all.map((c, i) => (
           <li key={c.label} className="flex items-center gap-3">
             {i > 0 && <span aria-hidden>/</span>}
             {c.href && i < all.length - 1 ? (
-              <Link href={c.href} className="hover:text-ivory">
+              <Link href={c.href} className="hover:text-brand">
                 {c.label}
               </Link>
             ) : (
-              <span aria-current="page" className="text-muted">
+              <span aria-current="page" className="text-ink">
                 {c.label}
               </span>
             )}

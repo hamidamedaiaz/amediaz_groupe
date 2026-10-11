@@ -8,7 +8,7 @@ import { ContourLines } from "@/components/ui/ContourLines";
 export default function NotFound() {
   return (
     <section className="relative flex min-h-[80svh] items-center overflow-hidden pt-28">
-      <ContourLines className="absolute -right-40 top-1/2 w-[48rem] max-w-none -translate-y-1/2 text-gold/15" seed={3.1} />
+      <ContourLines className="absolute -right-40 top-1/2 w-[48rem] max-w-none -translate-y-1/2 text-brand/10" seed={3.1} />
       <Container className="relative">
         <p className="eyebrow">Erreur 404</p>
         <h1 className="h-display mt-6">Page introuvable</h1>

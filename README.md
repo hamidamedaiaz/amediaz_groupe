@@ -29,15 +29,16 @@ app/                      Routes (App Router)
 data/                     ⭐ Tout le contenu du site — à modifier ici uniquement
   site.ts                 Identité, coordonnées, ICE, menu, URL du domaine
   media.ts                Catalogue des photos (chemin, dimensions, alt, cadrage)
-  services.ts             Liste des services (mega-menu Services, footer)
+  services.ts             Services : résumé, étapes, livrables (grille, panneau « Découvrir », menus)
   sectors.ts              Liste des secteurs + visuel du mega-menu Secteurs
-  home.ts                 Hero, chiffres clés, galerie, fondateur, références
+  home.ts                 Hero, chiffres, intros de sections, projets, à propos
   contact.ts              Options du formulaire
 
 components/
   layout/                 Header, MegaMenus (Services/Secteurs), MobileMenu, Footer
-  sections/               Sections de l'accueil (Hero, KeyFigures,
-                          FieldGallery, About, Contact)
+  sections/               Sections de l'accueil (Hero, KeyFigures, Expertises, Sectors,
+                          Projects, About, Contact)
+  services/               ServiceDrawer : panneau de détail d'un service (même page)
   ui/                     Briques réutilisables (Photo, PhotoChain, Counter,
                           ContourLines, Parallax, ContactForm…)
 
@@ -56,6 +57,8 @@ public/
 - **Ajouter un service / secteur** : une entrée dans `data/services.ts` ou `data/sectors.ts`
   suffit — menus et footer se mettent à jour (pas de page dédiée).
 - **Design system** : couleurs, typographie, boutons et animations dans `app/globals.css`.
+  Sections claires (ivoire `bg-paper` / blanc `bg-white`) en alternance ; une section
+  sombre ajoute la classe `on-dark` (header, hero, projets, footer).
 - **Animations** : `data-reveal` sur un élément = apparition au scroll. Toutes respectent
   `prefers-reduced-motion`.
 

@@ -1,35 +1,65 @@
 /**
- * Contenus de la page d'accueil (hors services et secteurs, voir leurs fichiers dédiés).
+ * Contenus de la page d'accueil (services et secteurs : voir leurs fichiers dédiés).
  *
- * RÈGLE : uniquement les informations fournies par AMEDIAZ GROUP (brief + charte).
- * Un champ optionnel laissé vide n'est pas affiché : il suffit de le renseigner
- * pour qu'il apparaisse sur le site.
+ * RÈGLE : les faits (chiffres, références, titres, ONIGT, BIM) viennent uniquement
+ * des documents fournis par AMEDIAZ GROUP (brief + charte). Les textes explicatifs
+ * décrivent les missions sans inventer de clients, de délais ni de chiffres.
  */
 
 import type { MediaKey } from "./media";
 
+// ---------------------------------------------------------------- Hero
 export const hero = {
   eyebrow: "AMEDIAZ GROUP",
   title: ["Nous mesurons aujourd’hui", "les projets de demain."],
   subtitle: "Topographie · Foncier · BIM · Digital",
   text: "Une expertise technique et digitale au service des projets de construction, d’immobilier et d’infrastructure au Maroc.",
-  primaryCta: { label: "Découvrir notre expertise", href: "/#terrain" },
+  primaryCta: { label: "Découvrir notre expertise", href: "/#expertises" },
   secondaryCta: { label: "Parler de votre projet", href: "/contact" },
   // Images du diaporama (format portrait, affichées dans le panneau droit).
   slides: ["tourChantier", "stationTotale", "tourMohammedVI"] as MediaKey[],
 };
 
-/** Chiffres clés (charte AMEDIAZ GROUP). `value` est animé de 0 à la valeur. */
+// ---------------------------------------------------------------- Chiffres clés
+/** Chiffres de la charte. `value` est animé de 0 à la valeur. */
 export const keyFigures: { value: number; suffix: string; label: string; pad?: boolean }[] = [
   { value: 9, suffix: " ans", label: "d’expérience professionnelle" },
   { value: 100, suffix: "+", label: "expertises immobilières réalisées" },
   { value: 500, suffix: "h+", label: "de formation BIM" },
 ];
 
+// ---------------------------------------------------------------- Nos expertises
+export const expertisesIntro = {
+  eyebrow: "Ce que nous faisons",
+  title: "Nos expertises",
+  text: "Du foncier à la livraison, dix missions complémentaires pour sécuriser chaque étape de votre projet, complétées par le BIM et l’expertise immobilière.",
+};
+
+// ---------------------------------------------------------------- Secteurs
+export const sectorsIntro = {
+  eyebrow: "Secteurs",
+  title: "Nos secteurs d’intervention",
+  text: "Une même exigence de précision, adaptée aux contraintes de chaque type de projet.",
+};
+
+// ---------------------------------------------------------------- Projets / références
+export const projects = {
+  eyebrow: "Références",
+  title: "Des projets qui exigent de la précision",
+  text: "Khalid AMEDIAZ est intervenu sur des projets de premier plan au cours de ses 9 années d’expérience.",
+};
+
+/** Projets de référence (charte AMEDIAZ GROUP). */
+export const references: { title: string }[] = [
+  { title: "Tour Mohammed VI" },
+  { title: "Complexe Sportif Prince Moulay Abdellah" },
+  { title: "Nouvel Hôpital Ibn Sina" },
+  { title: "MOL Project – UM6P" },
+];
+
 /**
- * Galerie « Notre expertise sur le terrain » : chaîne de photos réelles qui avance
- * de droite à gauche (voir PhotoChain). L'ordre ci-dessous est l'ordre de passage.
- * `caption` sert de texte alternatif complémentaire / référence interne.
+ * Photos de chantier de la section projets : chaîne qui défile de droite à gauche
+ * (voir PhotoChain). L'ordre ci-dessous est l'ordre de passage.
  */
 export const fieldGallery: { image: MediaKey; caption: string }[] = [
   { image: "tourChantier", caption: "Tour en construction" },
@@ -49,7 +79,9 @@ export const fieldGallery: { image: MediaKey; caption: string }[] = [
   { image: "architectureLivree", caption: "Structure finie" },
 ];
 
+// ---------------------------------------------------------------- À propos
 export const founder = {
+  eyebrow: "À propos",
   title: "Une expertise construite sur le terrain",
   name: "Khalid AMEDIAZ",
   roles: ["Ingénieur Géomètre Topographe", "BIM Manager"],
@@ -58,11 +90,3 @@ export const founder = {
   // TODO : remplacer par une photo du fondateur (public/images/fondateur.jpg) si disponible.
   image: "stationTotale" as MediaKey,
 };
-
-/** Projets de référence (affichés dans la section « À propos »). */
-export const references: { title: string }[] = [
-  { title: "Tour Mohammed VI" },
-  { title: "Complexe Sportif Prince Moulay Abdellah" },
-  { title: "Nouvel Hôpital Ibn Sina" },
-  { title: "MOL Project – UM6P" },
-];

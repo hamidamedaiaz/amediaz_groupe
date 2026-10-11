@@ -28,7 +28,7 @@ function ChoiceGroup({ name, legend, options }: { name: string; legend: string; 
         {options.map((opt) => (
           <label key={opt}>
             <input type="radio" name={name} value={opt} className="peer sr-only" />
-            <span className="chip peer-checked:border-gold peer-checked:bg-gold peer-checked:text-navy peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gold">
+            <span className="chip peer-checked:border-brand peer-checked:bg-brand peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gold">
               {opt}
             </span>
           </label>
@@ -63,12 +63,12 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="grid gap-x-6 gap-y-7 sm:grid-cols-2">
       {textFields.map((f) => (
         <label key={f.name} className="block">
           <span className="text-sm font-medium">
             {f.label}
-            {f.required && <span className="text-gold"> *</span>}
+            {f.required && <span className="text-brand"> *</span>}
           </span>
           <input name={f.name} type={f.type} autoComplete={f.autoComplete} required={f.required} className="field" />
         </label>
@@ -79,7 +79,7 @@ export function ContactForm() {
 
       <label className="block sm:col-span-2">
         <span className="text-sm font-medium">
-          Message<span className="text-gold"> *</span>
+          Message<span className="text-brand"> *</span>
         </span>
         <textarea name="message" rows={4} required className="field resize-y" />
       </label>

@@ -52,7 +52,7 @@ export function PhotoChain({ items, label }: { items: ChainItem[]; label: string
                   tabIndex={duplicate ? -1 : undefined}
                   aria-label={`Agrandir la photo : ${item.caption}`}
                   data-protected
-                  className="group media-frame relative block aspect-[3/4] w-full cursor-zoom-in text-left"
+                  className="group media-frame relative block aspect-[3/4] w-full cursor-zoom-in rounded-xl text-left"
                 >
                   <Photo
                     id={item.image}

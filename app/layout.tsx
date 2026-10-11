@@ -7,6 +7,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { ServiceDrawerProvider } from "@/components/services/ServiceDrawer";
 import { ImageProtection } from "@/components/ui/ImageProtection";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { site } from "@/data/site";
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b1d2d",
+  themeColor: "#0b2233",
 };
 
 // Données structurées : l'entreprise (schema.org ProfessionalService).
@@ -76,9 +77,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Aller au contenu
         </a>
-        <Header />
-        <main id="contenu">{children}</main>
-        <Footer />
+        {/* Le panneau de détail des services est accessible depuis le header et l'accueil */}
+        <ServiceDrawerProvider>
+          <Header />
+          <main id="contenu">{children}</main>
+          <Footer />
+        </ServiceDrawerProvider>
         <ScrollReveal />
         <ImageProtection />
       </body>

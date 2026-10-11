@@ -1,10 +1,10 @@
 "use client";
 
 /**
- * En-tête du site.
- * - Transparent en haut de page, fond navy solide dès que l'on défile ou qu'un menu est ouvert.
- * - Desktop : mega-menus « Services » et « Secteurs » (survol avec délai, clic, clavier, Échap).
+ * En-tête du site : fin (64px), blanc, fixé en haut de l'écran.
+ * - Desktop : mega-menus blancs « Services » et « Secteurs » (survol avec délai, clic, clavier, Échap).
  * - Mobile : menu plein écran (voir MobileMenu).
+ * Un filet très clair le sépare du contenu ; une ombre douce apparaît dès que l'on défile.
  */
 
 import Image from "next/image";
@@ -68,7 +68,7 @@ export function Header() {
   }, []);
   const closeAll = useCallback(() => setOpenMenu(null), []);
 
-  const solid = scrolled || openMenu !== null || mobileOpen;
+  const raised = scrolled || openMenu !== null || mobileOpen;
   // Lien actif : page courante (les ancres « /#… » et les mega-menus ne sont jamais actifs).
   const isActive = (item: NavItem) =>
     !!item.href && (item.href === "/" ? pathname === "/" : !item.href.includes("#") && pathname.startsWith(item.href));
@@ -76,35 +76,35 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow] duration-300 ${
-          solid ? "bg-navy/95 shadow-[0_1px_0_var(--color-line)] backdrop-blur-md" : "bg-transparent"
+        className={`fixed inset-x-0 top-0 z-50 border-b border-rule bg-white/95 text-ink backdrop-blur-md transition-shadow duration-300 ${
+          raised ? "shadow-[0_6px_24px_-18px_rgba(15,39,66,0.35)]" : ""
         }`}
         onMouseLeave={scheduleClose}
       >
-        <div className="container-site flex h-20 items-center justify-between gap-8">
+        <div className="container-site flex h-16 items-center justify-between gap-8">
           {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center gap-3" aria-label={`${site.name} — accueil`}>
             <Image
-              src="/brand/monogram-ag-reverse.png"
+              src="/brand/monogram-ag.png"
               alt=""
               width={488}
               height={474}
-              className="h-9 w-auto"
+              className="h-7 w-auto"
               preload
             />
-            <span className="font-display text-[0.9375rem] font-semibold tracking-[0.12em]">{site.name}</span>
+            <span className="font-display text-[0.875rem] font-bold tracking-[0.08em] text-ink">{site.name}</span>
           </Link>
 
           {/* Navigation desktop */}
-          <nav aria-label="Navigation principale" className="hidden items-center gap-10 lg:flex">
+          <nav aria-label="Navigation principale" className="hidden items-center gap-6 lg:flex">
             <ul className="flex items-center gap-1">
               {mainNav.map((item) => (
                 <li key={item.label}>
                   {item.menu ? (
                     <button
                       type="button"
-                      className={`group flex items-center gap-1.5 px-3.5 py-2 text-[0.9375rem] transition-colors hover:text-ivory ${
-                        openMenu === item.menu ? "text-ivory" : "text-muted"
+                      className={`group flex items-center gap-1 rounded-lg px-3 py-2 text-[0.9375rem] font-medium transition-colors hover:bg-paper hover:text-ink ${
+                        openMenu === item.menu ? "bg-paper text-ink" : "text-body"
                       }`}
                       aria-expanded={openMenu === item.menu}
                       aria-controls={`mega-${item.menu}`}
@@ -113,9 +113,9 @@ export function Header() {
                     >
                       {item.label}
                       <ChevronDown
-                        size={14}
+                        size={13}
                         aria-hidden
-                        className={`transition-transform duration-300 ${openMenu === item.menu ? "rotate-180 text-gold" : ""}`}
+                        className={`text-muted transition-transform duration-300 ${openMenu === item.menu ? "rotate-180" : ""}`}
                       />
                     </button>
                   ) : (
@@ -123,8 +123,8 @@ export function Header() {
                       href={item.href}
                       onMouseEnter={scheduleClose}
                       aria-current={isActive(item) ? "page" : undefined}
-                      className={`block px-3.5 py-2 text-[0.9375rem] transition-colors hover:text-ivory ${
-                        isActive(item) ? "text-ivory" : "text-muted"
+                      className={`block rounded-lg px-3 py-2 text-[0.9375rem] font-medium transition-colors hover:bg-paper hover:text-ink ${
+                        isActive(item) ? "text-ink" : "text-body"
                       }`}
                     >
                       {item.label}
@@ -162,7 +162,7 @@ export function Header() {
             <motion.div
               key={openMenu}
               id={`mega-${openMenu}`}
-              className="absolute inset-x-0 top-full hidden border-t border-line bg-navy lg:block"
+              className="absolute inset-x-0 top-full hidden border-y border-rule bg-white text-ink shadow-[0_24px_48px_-32px_rgba(15,39,66,0.35)] lg:block"
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8, transition: { duration: 0.15 } }}
@@ -175,8 +175,7 @@ export function Header() {
         </AnimatePresence>
       </header>
 
-      {/* Menu mobile : rendu hors du <header>, dont le backdrop-filter
-          servirait sinon de référence aux positions `fixed` */}
+      {/* Menu mobile : rendu hors du <header> (positionnement `fixed` indépendant) */}
       <AnimatePresence>{mobileOpen && <MobileMenu onNavigate={() => setMobileOpen(false)} />}</AnimatePresence>
     </>
   );

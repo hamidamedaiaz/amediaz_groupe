@@ -90,7 +90,7 @@ export function Lightbox({ items, index, onChange, onClose }: LightboxProps) {
           role="dialog"
           aria-modal="true"
           aria-label="Visionneuse de photos"
-          className="fixed inset-0 z-[70] flex flex-col bg-navy-deep/97 backdrop-blur-sm"
+          className="on-dark fixed inset-0 z-[70] flex flex-col bg-navy/97 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
