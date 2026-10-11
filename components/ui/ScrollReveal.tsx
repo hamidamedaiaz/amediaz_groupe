@@ -1,12 +1,17 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-// Ajoute .is-visible aux éléments [data-reveal] quand ils entrent dans l'écran.
+/**
+ * Ajoute `.is-visible` aux éléments `[data-reveal]` quand ils entrent dans l'écran.
+ * Relancé à chaque changement de page pour observer les nouveaux éléments.
+ * Le style de l'animation est défini dans globals.css.
+ */
 export function ScrollReveal() {
-  useEffect(() => {
-    const elements = document.querySelectorAll<HTMLElement>("[data-reveal]");
+  const pathname = usePathname();
 
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -16,12 +21,12 @@ export function ScrollReveal() {
           }
         }
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.15 },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
     );
 
-    elements.forEach((el) => observer.observe(el));
+    document.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-visible)").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return null;
 }
