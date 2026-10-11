@@ -1,7 +1,7 @@
 /**
  * Prestations d'AMEDIAZ GROUP.
- * Alimente : la section « Nos expertises », le panneau de détail « Découvrir »,
- * le mega-menu Services et le footer. Il n'y a pas de page par service :
+ * Alimente : le mega-menu Services, le panneau de détail « Découvrir »
+ * et le footer. Il n'y a pas de page par service :
  * le détail s'ouvre dans un panneau latéral sur la page d'accueil.
  *
  * Les 10 missions numérotées (01 → 10) reprennent la charte « Nos missions ».
@@ -21,7 +21,7 @@ export type Service = {
   /** Libellé court pour le footer quand le titre est long. */
   shortTitle?: string;
   category: ServiceCategory;
-  /** Description courte (grille « Nos expertises »). */
+  /** Description courte (en tête du panneau de détail). */
   summary: string;
   /** Déroulé de la mission en 4 étapes (panneau de détail). */
   steps: { title: string; text: string }[];

@@ -29,15 +29,14 @@ app/                      Routes (App Router)
 data/                     ⭐ Tout le contenu du site — à modifier ici uniquement
   site.ts                 Identité, coordonnées, ICE, menu, URL du domaine
   media.ts                Catalogue des photos (chemin, dimensions, alt, cadrage)
-  services.ts             Services : résumé, étapes, livrables (grille, panneau « Découvrir », menus)
+  services.ts             Services : résumé, étapes, livrables (mega-menu + panneau « Découvrir »)
   sectors.ts              Liste des secteurs + visuel du mega-menu Secteurs
-  home.ts                 Hero, chiffres, intros de sections, projets, à propos
+  home.ts                 Hero, chiffres, projets, à propos
   contact.ts              Options du formulaire
 
 components/
   layout/                 Header, MegaMenus (Services/Secteurs), MobileMenu, Footer
-  sections/               Sections de l'accueil (Hero, KeyFigures, Expertises, Sectors,
-                          Projects, About, Contact)
+  sections/               Sections de l'accueil (Hero, KeyFigures, Projects, About, Contact)
   services/               ServiceDrawer : panneau de détail d'un service (même page)
   ui/                     Briques réutilisables (Photo, PhotoChain, Counter,
                           ContourLines, Parallax, ContactForm…)

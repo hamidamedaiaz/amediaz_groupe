@@ -14,7 +14,7 @@ export const hero = {
   title: ["Nous mesurons aujourd’hui", "les projets de demain."],
   subtitle: "Topographie · Foncier · BIM · Digital",
   text: "Une expertise technique et digitale au service des projets de construction, d’immobilier et d’infrastructure au Maroc.",
-  primaryCta: { label: "Découvrir notre expertise", href: "/#expertises" },
+  primaryCta: { label: "Découvrir notre expertise", href: "/#projets" },
   secondaryCta: { label: "Parler de votre projet", href: "/contact" },
   // Images du diaporama (format portrait, affichées dans le panneau droit).
   slides: ["tourChantier", "stationTotale", "tourMohammedVI"] as MediaKey[],
@@ -28,20 +28,6 @@ export const keyFigures: { value: number; suffix: string; label: string; pad?: b
   { value: 500, suffix: "h+", label: "de formation BIM" },
 ];
 
-// ---------------------------------------------------------------- Nos expertises
-export const expertisesIntro = {
-  eyebrow: "Ce que nous faisons",
-  title: "Nos expertises",
-  text: "Du foncier à la livraison, dix missions complémentaires pour sécuriser chaque étape de votre projet, complétées par le BIM et l’expertise immobilière.",
-};
-
-// ---------------------------------------------------------------- Secteurs
-export const sectorsIntro = {
-  eyebrow: "Secteurs",
-  title: "Nos secteurs d’intervention",
-  text: "Une même exigence de précision, adaptée aux contraintes de chaque type de projet.",
-};
-
 // ---------------------------------------------------------------- Projets / références
 export const projects = {
   eyebrow: "Références",
@@ -50,9 +36,13 @@ export const projects = {
 };
 
 /** Projets de référence (charte AMEDIAZ GROUP). */
-export const references: { title: string }[] = [
-  { title: "Tour Mohammed VI" },
-  { title: "Complexe Sportif Prince Moulay Abdellah" },
+/**
+ * `image` : photo fournie associée au projet (aperçu au survol + visionneuse).
+ * TODO : ajouter les photos de l'Hôpital Ibn Sina et du MOL Project si disponibles.
+ */
+export const references: { title: string; image?: MediaKey }[] = [
+  { title: "Tour Mohammed VI", image: "tourMohammedVI" },
+  { title: "Complexe Sportif Prince Moulay Abdellah", image: "stadeTribunes" },
   { title: "Nouvel Hôpital Ibn Sina" },
   { title: "MOL Project – UM6P" },
 ];

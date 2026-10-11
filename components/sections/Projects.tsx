@@ -1,43 +1,49 @@
 /**
  * « Des projets qui exigent de la précision » : la grande section forte (bleu marine) du site.
- * Titre et liste des références, puis chaîne de grandes photos de chantier
- * (défilement continu, clic = visionneuse plein écran).
+ * 1. En-tête : badge, titre, texte d'introduction.
+ * 2. Liste éditoriale des références (aperçu photo au survol, visionneuse au clic).
+ * 3. Chaîne de grandes photos de chantier (défilement continu, clic = visionneuse).
  * Contenus : data/home.ts (projects, references, fieldGallery).
  */
 
 import { Container } from "@/components/ui/Container";
 import { PhotoChain } from "@/components/ui/PhotoChain";
+import { ReferenceList } from "@/components/ui/ReferenceList";
 import { fieldGallery, projects, references } from "@/data/home";
 
 export function Projects() {
   return (
     <section id="projets" className="on-dark sheet section overflow-hidden">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-6">
+        {/* En-tête */}
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
+          <div className="lg:col-span-7">
             <p className="eyebrow" data-reveal>
               {projects.eyebrow}
             </p>
-            <h2 className="h-section mt-4" data-reveal>
+            <h2 className="h-section mt-5 max-w-[34rem] text-[clamp(2rem,2vw+1.4rem,3rem)]" data-reveal>
               {projects.title}
             </h2>
-            <p className="lead mt-6" data-reveal>
-              {projects.text}
+          </div>
+          <div className="lg:col-span-5" data-reveal>
+            <p className="lead">{projects.text}</p>
+            <p className="mt-6 flex items-center gap-3 text-sm text-mist">
+              <span className="font-display text-2xl font-bold text-white">
+                {String(references.length).padStart(2, "0")}
+              </span>
+              projets de référence
             </p>
           </div>
+        </div>
 
-          <ol className="self-end border-t border-line lg:col-span-6" data-reveal>
-            {references.map((r, i) => (
-              <li key={r.title} className="flex items-baseline gap-5 border-b border-line py-4">
-                <span className="num">{String(i + 1).padStart(2, "0")}</span>
-                <span className="font-display text-lg font-medium text-white">{r.title}</span>
-              </li>
-            ))}
-          </ol>
+        {/* Références */}
+        <div className="mt-14 md:mt-16">
+          <ReferenceList items={references} />
         </div>
       </Container>
 
-      <div className="mt-14 md:mt-20" data-reveal>
+      {/* Photos de chantier */}
+      <div className="mt-16 md:mt-24" data-reveal>
         <PhotoChain items={fieldGallery} label="Photos de chantier" />
       </div>
     </section>

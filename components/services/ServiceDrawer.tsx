@@ -2,8 +2,8 @@
 
 /**
  * Panneau de détail d'un service (« Découvrir »), ouvert sur la page courante :
- * pas de changement de page. Accessible depuis la grille « Nos expertises »
- * et depuis le mega-menu Services.
+ * pas de changement de page. Accessible depuis le mega-menu Services
+ * et le menu mobile.
  *
  * - ServiceDrawerProvider : à placer une fois dans le layout ; expose `openService(slug)`.
  * - Le panneau glisse depuis la droite (fond blanc), se ferme par ×, Échap ou clic sur le voile.
